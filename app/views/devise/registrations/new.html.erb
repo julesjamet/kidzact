@@ -2,7 +2,7 @@
   <div class="form-container">
     <div class="image-holder" style="background: url(<%= asset_path "fun.jpg"%>) center / cover no-repeat;">
     </div>
-    <form method="post">
+    <%# <form method="post"> %>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
       <h2 class="text-center">Créer un compte.</h2>
@@ -35,6 +35,6 @@
       <%= render "devise/shared/links" %>
       <%= link_to "Retour vers la page d'accueil", root_path, class: "already" %>
     <% end %>
-    </form>
+    <%# </form> %>
   </div>  
 </div>
