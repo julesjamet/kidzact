@@ -25,6 +25,6 @@ class KidsController < ApplicationController
     private
 
     def restaurant_params
-        params.require(:kid).permit(:name, :age, :school)
+        params.require(:kid).permit(:name, :age, :school, :image)
     end
 end
