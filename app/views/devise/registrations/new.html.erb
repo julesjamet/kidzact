@@ -1,25 +1,40 @@
-<h2>Sign up</h2>
+<div class="d-flex align-items-center register-photo" >
+  <div class="form-container">
+    <div class="image-holder" style="background: url(<%= asset_path "fun.jpg"%>) center / cover no-repeat;">
+    </div>
+    <form method="post">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+      <h2 class="text-center">Créer un compte.</h2>
+      <div class="form-group">
+      <%= f.input :email,
+      required: true,
+      autofocus: true,
+      label: false,
+      input_html: { autocomplete: "email", placeholder: "Email" }%>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-group">
+      <%= f.input :password,
+      required: true,
+      label: false,
+      # hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+      input_html: { autocomplete: "new-password", placeholder:"Mot de passe" } %>
+      </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+      <div class="form-group">
+      <%= f.input :password_confirmation,
+      required: true,
+      label: false,
+      input_html: { autocomplete: "new-password", placeholder: "Confirmer mot de passe" } %>
+      </div>
+                  
+      <div class="form-group">
+      <%= f.button :submit, "S'inscrire", class: "btn btn-primary btn-block" , style:"background: #007bff;" %>
+      </div>
+      <%= render "devise/shared/links" %>
+      <%= link_to "Retour vers la page d'accueil", root_path, class: "already" %>
+    <% end %>
+    </form>
+  </div>  
+</div>
