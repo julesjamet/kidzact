@@ -1,6 +1,15 @@
 <nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
-        <div class="container"><i class="far fa-smile" style="font-size: 35px;color: #007bff;"></i><a class="navbar-brand" href="#" style="padding-left: 10px;">KIDZACT</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1"><a class="btn btn-primary ml-auto" role="button" href="#">Se connecter</a></div>
+        <div class="container">
+            <i class="far fa-smile" style="font-size: 35px;color: #007bff;"></i>
+            <a class="navbar-brand" href="#" style="padding-left: 10px;">KIDZACT</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"></button>
+            <div class="collapse navbar-collapse"id="navcol-1">
+            <% if user_signed_in? %>
+                <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-auto"  %>
+                <% else %>
+                <%= link_to "Se connecter", new_user_session_path, class: "btn btn-primary ml-auto"  %>
+                <%# <a class="btn btn-primary ml-auto" role="button" href="#">Se connecter</a> %>
+            <% end %>
+            </div>
         </div>
     </nav>
