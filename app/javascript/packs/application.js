@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import Tagify from '@yaireo/tagify';
+import '@yaireo/tagify/src/tagify.scss';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +33,6 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  console.log("application JS is here");
+  var tagify = new Tagify(document.querySelector("#tags"));
 });

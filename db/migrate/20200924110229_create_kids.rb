@@ -4,11 +4,11 @@ class CreateKids < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :age
       t.string :school
-      t.text :languages
+      t.text :languages, array: true, default: []
       t.text :desc
-      t.text :sports
-      t.text :places
-      t.text :interests
+      t.text :sports, array: true, default: []
+      t.text :places, array: true, default: []
+      t.text :interests, array: true, default: []
 
       t.timestamps
     end

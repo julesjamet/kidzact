@@ -4,13 +4,34 @@ class KidsController < ApplicationController
         @kids = Kid.all
     end
 
+    def show
+        @kid = Kid.find(params[:id])
+        puts "-------------"
+        array = JSON.parse(@kid.languages)
+        array.each { |lang| puts lang.values}
+        
+        puts "-------------"
+    end
+
     def new
         @kid = Kid.new
     end
 
     def create
-        @kid = Kid.new(restaurant_params)
+        @kid = Kid.new(kid_params)
         @kid.save
+        redirect_to kid_path(@kid)
+    end
+
+    def edit
+        @kid = Kid.find(params[:id])
+    end
+
+    def update
+        @kid = Kid.find(params[:id])
+        @kid.update(kid_params)
+    
+        # no need for app/views/kids/update.html.erb
         redirect_to kid_path(@kid)
     end
 
@@ -24,7 +45,7 @@ class KidsController < ApplicationController
 
     private
 
-    def restaurant_params
-        params.require(:kid).permit(:name, :age, :school, :image)
+    def kid_params
+        params.require(:kid).permit(:name, :age, :school, :image, :desc, :languages)
     end
 end
