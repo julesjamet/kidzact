@@ -34,5 +34,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   console.log("application JS is here");
-  var tagify = new Tagify(document.querySelector("#tags"));
+  const languages = new Tagify(document.querySelector("#langs"));
+  const  sports = new Tagify(document.querySelector("#sports"));
+  const  ints = new Tagify(document.querySelector("#ints"));
+  const  places = new Tagify(document.querySelector("#places"));
 });

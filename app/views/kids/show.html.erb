@@ -11,7 +11,7 @@
                     <%= lang.values[0] %>
                     <% end %>
                     </h5>
-                    <p>J'adore les transformers. J'aime bcp le foot, tennis et les bonbons. Je cours très vite aussi donc j'adore faire la course avec mes amis. Je suis un grand fan de pokemons. Mon préféré, c'est Pikachu biensûr !&nbsp;</p>
+                    <p><%= @kid.desc %></p>
                 </div>
             </div>
         </div>
@@ -215,8 +215,9 @@
                 <div style="padding: 10px;">
                     <h4 style="padding-left: 20px;">Sports :</h4>
                     <ul style="margin-top: 5px;">
-                        <li style="margin-top: 5px;">Equitation</li>
-                        <li style="margin-top: 5px;">Tennis</li>
+                        <% JSON.parse(@kid.sports).each do |sport| %>
+                        <li style="margin-top: 5px;"><%= sport.values[0] %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>
@@ -224,9 +225,9 @@
                 <div style="padding: 10px;">
                     <h4 style="padding-left: 20px;">Lieux :</h4>
                     <ul style="margin-top: 5px;">
-                        <li style="margin-top: 5px;">JOJO Land</li>
-                        <li style="margin-top: 5px;">Bar Sol Plage</li>
-                        <li style="margin-top: 5px;">Park de Perdicaris</li>
+                    <% JSON.parse(@kid.places).each do |place| %>
+                        <li style="margin-top: 5px;"><%= place.values[0] %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>
@@ -234,8 +235,9 @@
                 <div style="padding: 10px;">
                     <h4 style="padding-left: 20px;">Culture :</h4>
                     <ul style="margin-top: 5px;">
-                        <li style="margin-top: 5px;">Mine Craft</li>
-                        <li style="margin-top: 5px;">Roblox</li>
+                    <% JSON.parse(@kid.interests).each do |int| %>
+                        <li style="margin-top: 5px;"><%= int.values[0] %></li>
+                    <% end %>
                     </ul>
                 </div>
             </div>

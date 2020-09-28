@@ -22,7 +22,7 @@
                         label: false %>
                 <%= f.input :languages,
                         label: false,
-                        input_html: {id: "tags", class: "border rounded border-primary", value: "Anglais, Français, Arabe"} %> 
+                        input_html: {id: "langs", class: "border rounded border-primary", value: "Anglais, Français, Arabe"} %> 
                 
         
                     <%# <input class="border rounded border-primary" type="text" style="width: 100%;/*border-style: none;*/font-size: 20px;font-weight: bold;margin-bottom: 5px;" placeholder="Ecole" value="Français - Arabe - Anglais"> %>
@@ -228,15 +228,27 @@
         <div class="row" style="margin-top: 20px;margin-bottom: 20px;box-shadow: 3px 3px 11px -1px rgb(214,219,224);padding-top: 10px;padding-bottom: 10px;">
             <div class="col-12 col-md-4">
                 <div style="padding: 10px;">
-                    <h4 style="padding-left: 20px;">Sports :</h4><input class="border rounded border-primary" type="text" style="width: 90%;margin-left: 20px;"></div>
+                    <h4 style="padding-left: 20px;">Sports :</h4>
+                        <%= f.input :sports,
+                        label: false,
+                        input_html: {id: "sports", class: "border rounded border-primary", value: "foot, basket"} %> 
+                    </div>
             </div>
             <div class="col-12 col-md-4">
                 <div style="padding: 10px;">
-                    <h4 style="padding-left: 20px;">Lieux :</h4><input class="border rounded border-primary" type="text" style="width: 90%;margin-left: 20px;"></div>
+                    <h4 style="padding-left: 20px;">Lieux :</h4>
+                        <%= f.input :places,
+                        label: false,
+                        input_html: {id: "places", class: "border rounded border-primary"}%> 
+                    </div>
             </div>
             <div class="col-12 col-md-4">
                 <div style="padding: 10px;">
-                    <h4 style="padding-left: 20px;">Culture :</h4><input class="border rounded border-primary" type="text" style="width: 90%;margin-left: 20px;"></div>
+                    <h4 style="padding-left: 20px;">Interêts :</h4>
+                        <%= f.input :interests,
+                        label: false,
+                        input_html: {id: "ints", class: "border rounded border-primary"} %> 
+                    </div>
             </div>
         </div>
         <div class="d-flex justify-content-center" style="margin-top: 10px;margin-bottom: 20px;">
