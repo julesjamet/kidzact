@@ -4,6 +4,9 @@ class KidsController < ApplicationController
         @kids = Kid.all
     end
 
+    def dashboard
+    end
+
     def show
         @kid = Kid.find(params[:id])
         puts "-------------"

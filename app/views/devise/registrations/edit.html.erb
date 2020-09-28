@@ -2,8 +2,13 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
         <div class="row" style="margin-top: 50px;margin-bottom: 20px;box-shadow: 3px 3px 11px -1px rgb(214,219,224);">   
-            <div class="col-8 col-lg-6 offset-2 offset-lg-0" style="background: url(<%= asset_url "empty.png"%>) center / cover no-repeat;min-height: 300px;">
-            </div> 
+            <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
+              <% if current_user.avatar.attached? %>
+                <%= cl_image_tag @user.avatar.key, id: 'avatar', :crop => 'fill', height: 400, width: 400, gravity: "auto" %>
+              <% else %>
+                <%= image_tag "empty.png", id: 'avatar', style: 'height:250px; margin-top:20px; border-radius: 5px;' %>
+              <% end %>
+            </div>
             <div class="col-12 col-lg-6">
               <div style="padding: 10px;">
                 
@@ -65,31 +70,39 @@
                     class: "border rounded border-primary",
                     placeholder: "Insérer votre mot de passe",
                     style: "width: 100%; padding-left: 10px;" %>
+
+                <%= f.input :avatar, as: :file, required: false, input_html: { :onchange => "preview()", style: "margin-top: 10px;" }, label: false %>
               </div>
             </div>
         </div>
         <div class="justify-content-center" style="margin-top: 10px;margin-bottom: 20px;">
-          <input class="border rounded border-primary form-control-lg" type="text" placeholder="Inserer votre adresse" style="width: 100%;">
+          
+          
+          <%= f.input :address,
+              label: false,
+              input_html: { id: "place_address", placeholder: "Insérer votre addresse ici", class: "border rounded border-primary form-control-lg", style: "width: 100%;"} %> 
           <p style="color: rgb(167,174,181);font-size: 16px;margin-top: 3px;">* Votre adresse sert à filtrer par quartiers et ne sera pas divulger aux autres parents</p>
-          <iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="400"></iframe>
+          
+          <%# <iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="400"></iframe> %>
+          <div id="map-container" style="height: 300px; width: 100%;"></div>
+        
         </div>
         <div class="d-flex justify-content-center" style="margin-top: 10px;margin-bottom: 20px;">
-          <button class="btn btn-outline-danger btn-lg" type="button" style="padding: 15px;margin-right: 5px;">Retour</button>
-          <button class="btn btn-primary btn-lg" type="button" style="padding: 15px;">Sauvegarder</button>
-          <button class="btn btn-danger btn-lg" type="button" style="padding: 15px;margin-left: 5px;width: 150px;">Supprimer Compte</button>
+          <%= link_to "Retour", dashboard_path, class: "btn btn-outline-danger btn-lg", style: "padding: 15px;margin-right: 5px;" %>
+          
+          <%# <button class="btn btn-outline-danger btn-lg" type="button" style="padding: 15px;margin-right: 5px;">Retour</button> %>
+          <%= f.button :submit, "Sauvegarder", class: "btn btn-primary btn-lg", style: "padding: 15px;"  %> 
+          <%# <button class="btn btn-primary btn-lg" type="button" style="padding: 15px;">Sauvegarder</button> %>
+
+          <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr ?" }, method: :delete, class: "btn btn-danger btn-lg", style: "padding: 15px;margin-left: 5px;width: 150px;" %>
+          <%# <button class="btn btn-danger btn-lg" type="button" style="padding: 15px;margin-left: 5px;width: 150px;">Supprimer Compte</button> %>
         </div>
     </div>
-
-
- 
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<script>
+  function preview() {
+    avatar.src=URL.createObjectURL(event.target.files[0]);
+  }
+</script>
